@@ -1,14 +1,15 @@
-import { RESTDataSource } from '@apollo/datasource-rest';
+const { RESTDataSource } = require('apollo-datasource-rest')
 
 class UsersAPI extends RESTDataSource {
-    constructor(){
-        super()
-        this.baseUrl = "http://localhost:3000"
-    }
+  constructor(){
+    super()
+    this.baseURL = 'http://localhost:3000'
+  }
 
-    async getUsers() {
-       return this.get("/users")
-    }
+  async getUsers() { 
+    return this.get('/users')
+  }
+
 }
 
-module.exports = UsersAPI;
+module.exports = UsersAPI
