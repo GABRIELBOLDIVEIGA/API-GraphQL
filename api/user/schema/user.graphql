@@ -1,64 +1,62 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server')
 
 const userSchema = gql `
-    scalar DateTime
+scalar DateTime
 
-    type User {
-        nome: String!
-        ativo: Boolean!
-        email: String
-        role: Role!
-        createdAt: DateTime
-    }
+  type User {
+    nome: String!
+    ativo: Boolean!
+    email: String
+    role: Role!
+    createdAt: DateTime
+  }
 
-    type Query {
-        users: [User]
-        user(id: ID!): User! 
-    }
+  input UserInput {
+    nome: String
+    ativo: Boolean
+    email: String
+    role: RolesType
+    createdAt: DateTime
+  }
 
-    input UserInput {
-        nome: String
-        ativo: Boolean
-        email: String
-        role: RolesType
-        createdAt: DateTime
-    }
-    
-    type Role {
-        id: ID!
-        type: RolesType!
-    }
+  type Role {
+    id: ID!
+    type: RolesType!
+  }
 
-    enum RolesType {
-        ESTUDANTE
-        DOCENTE
-        COORDENACAO
-    }
+  enum RolesType {
+    ESTUDANTE
+    DOCENTE
+    COORDENACAO
+  }
 
-    type Mutation {
-        adicionaUser(user: UserInput): User!
-        atualizaUser(id: ID!, user: UserInput): atualizaUserResposta!
-        deletaUser(id: ID!): deletaUserResposta!
-    }
+  type Query {
+    users: [User]
+    user(id: ID!): User!
+  }
 
-    interface respostaCustom {
-        code: Int!
-        mensagem: String!
-    }
+  type Mutation {
+    adicionaUser(user: UserInput): User!
+    atualizaUser(id: ID!, user: UserInput): atualizaUserResposta!
+    deletaUser(id: ID!): deletaUserResposta!
+  }
 
-    type deletaUserResposta implements respostaCustom {
-        code: Int!
-        mensagem: String!
-    }
+  interface respostaCustom {
+    code: Int!
+    mensagem: String!
+  }
 
-    type atualizaUserResposta implements respostaCustom {
-        code: Int!
-        mensagem: String!
-        user: User!
-    }
+  type deletaUserResposta implements respostaCustom {
+    code: Int!
+    mensagem: String!
+  }
+
+  type atualizaUserResposta implements respostaCustom {
+    code: Int!
+    mensagem: String!
+    userAtualizado: User!
+  }
 
 `
 
 module.exports = userSchema
-
-
