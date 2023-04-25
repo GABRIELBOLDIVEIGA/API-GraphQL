@@ -25,6 +25,7 @@ scalar DateTime
   type Query {
     turmas: [Turma]
     turma (id: ID!): Turma
+    turmas (page: Int, pageOffset: Int): [Turma]
   }
 
   type Mutation {

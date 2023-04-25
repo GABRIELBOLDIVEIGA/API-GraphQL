@@ -3,7 +3,7 @@ const matriculaResolvers = require('./resolvers/matriculaResolvers')
 const MatriculasAPI = require('./datasource/matricula')
 
 module.exports = {
-    matriculaSchema,
-    matriculaResolvers,
-    MatriculasAPI
+  matriculaSchema,
+  matriculaResolvers,
+  MatriculasAPI
 }
