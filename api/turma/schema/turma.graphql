@@ -8,7 +8,7 @@ scalar DateTime
     descricao: String!
     horario: String
     vagas: Int
-    inicio: DateTime
+    inicio: String
     docente: User!
     createdAt: DateTime!
     matriculas: [Matricula]
@@ -18,7 +18,7 @@ scalar DateTime
     descricao: String
     horario: String
     vagas: Int
-    inicio: DateTime
+    inicio: String
     docente_id: Int
   }
 

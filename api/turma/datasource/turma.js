@@ -43,7 +43,7 @@ class TurmasAPI extends SQLDataSource {
   async incluiTurma(novaTurma) {
     const novaTurmaId = await this.db
       .insert(novaTurma)
-      .returning('id')
+      // .returning('id')
       .into('turmas')
   
     const turmaInserida = await this.getTurma(novaTurmaId[0])
