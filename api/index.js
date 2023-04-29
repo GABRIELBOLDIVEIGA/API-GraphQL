@@ -2,6 +2,8 @@ const { ApolloServer } = require('apollo-server')
 const { mergeTypeDefs } = require('graphql-tools')
 const path = require('path')
 
+const PORT = process.env.PORT || 4000;
+
 const { userSchema, userResolvers, UsersAPI } = require('./user')
 const { turmaSchema, turmaResolvers, TurmasAPI } = require('./turma')
 const { matriculaSchema, matriculaResolvers, MatriculasAPI } = require('./matricula')
@@ -29,6 +31,9 @@ const server = new ApolloServer( {
   },
  })
 
-server.listen().then(({url}) => {
+// server.listen().then(({url}) => {
+//   console.log(`Servidor rodando na porta ${url}`)
+// })
+server.listen(PORT).then(({url}) => {
   console.log(`Servidor rodando na porta ${url}`)
 })
