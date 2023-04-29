@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js,json,graphql ./api/index.js",
+    "startEsseEhOriginal": "nodemon -e js,json,graphql ./api/index.js",
+    "start": "node ./api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
