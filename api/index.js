@@ -2,12 +2,16 @@ const { ApolloServer } = require('apollo-server')
 const { mergeTypeDefs } = require('graphql-tools')
 const path = require('path')
 
+const mongoose = require('mongoose');
+
 const { userSchema, userResolvers, UsersAPI } = require('./user')
 const { turmaSchema, turmaResolvers, TurmasAPI } = require('./turma')
 const { matriculaSchema, matriculaResolvers, MatriculasAPI } = require('./matricula')
 
 const typeDefs = mergeTypeDefs([userSchema, turmaSchema, matriculaSchema])
 const resolvers = [userResolvers, turmaResolvers, matriculaResolvers]
+
+const MONGODB = "";
 
 const dbConfig = {
   client: 'sqlite3',
@@ -28,6 +32,14 @@ const server = new ApolloServer( {
     }
   },
  })
+
+ mongoose.connect(MONGODB, {useNewUrlParser: true})
+  .then(() => {
+    console.log("Mongo conectado");
+    return server.listen({port: process.env.PORT || 4000});
+  }).then((res) => {
+    console.log("Server rodando: ", res)
+  })
 
 // server.listen().then(({url}) => {
 //   console.log(`Servidor rodando na porta ${url}`)
